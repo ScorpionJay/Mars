@@ -8,8 +8,8 @@ Mars
 5.css压缩<br/>
 6.image压缩<br/>
 7.复制删除<br/>
-8.打包build
+8.打包build<br/>
 
-<br/>
-如何使用:
-将源码放在src文件夹下，grunt build打包到dist文件夹下
+<h3>如何使用:<h3/>
+1.npm install 安装js<br/>
+2.将源码放在src文件夹下，grunt build打包到dist文件夹下
