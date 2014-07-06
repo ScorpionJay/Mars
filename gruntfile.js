@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    // connect
+
     connect:{
       options:{
         port:9000,
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
         }
       }
     },
-    // watch
+
     watch:{
       livereload:{
     		options:{
@@ -36,10 +36,77 @@ module.exports = function(grunt) {
     			'app/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
     		]
 	    }
+    },
+    
+    htmlmin: {                                    
+      minify: {                                     
+        options: {                        
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        files: [{
+          expand:true,
+          cwd:'src',
+          src:'**/*.html',
+          dest:'dist'
+        }]
+      }
+    },
+
+    cssmin: {
+      minify: {
+        expand: true,
+        cwd: 'src',
+        src: '**/*.css',
+        dest: 'dist'
+        //ext: '.min.css'
+      }
+    },
+
+    uglify: {
+      minify: {
+        files: [{
+          expand: true,
+          cwd: 'src',
+          src: '**/*.js',
+          dest: 'dist'
+        }]
+      }
+    },
+
+    imagemin: {                          
+      minify: {                         
+        files: [{
+          expand: true,                 
+          cwd: 'src',                   
+          src: ['**/*.{png,jpg,gif,ico}'],   
+          dest: 'dist'                  
+        }]
+      }
+    },
+
+    clean: {
+          dist: {
+              files: [{
+                  dot: true,
+                  src: [
+                      'dist'
+                  ]
+              }]
+          }
+    },
+
+    copy: {
+      main: {
+        files: [{
+          expand: true,                 
+          cwd: 'src',                   
+          src: ['**/*.{txt,json,eot,svg,ttf,woff}'],   
+          dest: 'dist'                  
+        }]
+      }
     }
 
-    // others tasks
-    
   });
 
   // register task
@@ -48,4 +115,36 @@ module.exports = function(grunt) {
     'watch'
   ]);
 
+  grunt.registerTask('htmlcompress',[
+      'htmlmin'
+  ]);
+
+  grunt.registerTask('csscompress',[
+      'cssmin'
+  ]);
+
+  grunt.registerTask('jscompress',[
+      'uglify'
+  ]);
+
+  grunt.registerTask('imagecompress',[
+      'imagemin'
+  ]);
+
+  grunt.registerTask('clear',[
+      'clean'
+  ]);
+
+  grunt.registerTask('copytask',[
+      'copy'
+  ]);
+
+  grunt.registerTask('build',[
+    'clean',
+    'htmlmin',
+    'cssmin',
+    'uglify',
+    'imagemin',
+    'copy'
+  ]);
 };
