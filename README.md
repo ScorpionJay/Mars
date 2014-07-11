@@ -14,4 +14,4 @@ Mars
 1.npm install 安装js<br/>
 2.将源码放在src文件夹下，grunt build打包到dist文件夹下
 
-<h3>...优化中</h3>
+<h3>优化中...</h3>
