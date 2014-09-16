@@ -9,6 +9,7 @@ Mars
 6.image压缩<br/>
 7.复制删除<br/>
 8.打包build<br/>
+9.js lib    grunt b
 
 <h3>如何使用:<h3/>
 1.npm install 安装js<br/>
