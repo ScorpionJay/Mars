@@ -105,6 +105,20 @@ module.exports = function(grunt) {
           dest: 'dist'                  
         }]
       }
+    },
+
+    bower: {
+      install: {
+        options: {
+          targetDir: 'app/js/lib',
+          layout: 'byComponent',
+          install: true,
+          verbose: false,
+          cleanTargetDir: false,
+          cleanBowerDir: false,
+          bowerOptions: {}
+        }
+      }
     }
 
   });
@@ -138,6 +152,11 @@ module.exports = function(grunt) {
   grunt.registerTask('copytask',[
       'copy'
   ]);
+
+  grunt.registerTask('b',[
+      'bower'
+  ]);
+  
 
   grunt.registerTask('build',[
     'clean',
