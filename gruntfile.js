@@ -74,6 +74,13 @@ module.exports = function(grunt) {
       }
     },
 
+    concat: {
+      dist: {
+        src: ['src/**/*.js'],
+        dest: 'dist/built.js'
+      }
+    },
+
     imagemin: {                          
       minify: {                         
         files: [{
@@ -127,6 +134,10 @@ module.exports = function(grunt) {
   grunt.registerTask('serve',[
     'connect:server',
     'watch'
+  ]);
+
+  grunt.registerTask('fileconcat',[
+      'concat'
   ]);
 
   grunt.registerTask('htmlcompress',[
